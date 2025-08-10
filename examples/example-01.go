@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/Pramod-Devireddy/go-exprtk"
+	"github.com/fffaraz/go-exprtk"
 )
 
 func example01() {

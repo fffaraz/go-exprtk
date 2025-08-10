@@ -3,17 +3,17 @@
 </p>
 
 <p align="center">
-  <a href="https://godoc.org/github.com/Pramod-Devireddy/go-exprtk">
-  	<img src="https://godoc.org/github.com/Pramod-Devireddy/go-exprtk?status.svg" alt="Go Doc Reference">
+  <a href="https://godoc.org/github.com/fffaraz/go-exprtk">
+  	<img src="https://godoc.org/github.com/fffaraz/go-exprtk?status.svg" alt="Go Doc Reference">
   </a>
-  <a href="https://travis-ci.com/Pramod-Devireddy/go-exprtk">
-  <img src="https://www.travis-ci.com/Pramod-Devireddy/go-exprtk.svg?branch=main" alt="Build Status">
+  <a href="https://travis-ci.com/fffaraz/go-exprtk">
+  <img src="https://www.travis-ci.com/fffaraz/go-exprtk.svg?branch=main" alt="Build Status">
   </a>
-  <a href="https://codecov.io/gh/Pramod-Devireddy/go-exprtk">
-  	<img src="https://codecov.io/gh/Pramod-Devireddy/go-exprtk/branch/main/graph/badge.svg?token=9pNExL9yZt"/>
+  <a href="https://codecov.io/gh/fffaraz/go-exprtk">
+  	<img src="https://codecov.io/gh/fffaraz/go-exprtk/branch/main/graph/badge.svg?token=9pNExL9yZt"/>
   </a>
-  <a href="https://goreportcard.com/report/github.com/Pramod-Devireddy/go-exprtk">
-  	<img src="https://goreportcard.com/badge/github.com/Pramod-Devireddy/go-exprtk" alt="Go Report Card">
+  <a href="https://goreportcard.com/report/github.com/fffaraz/go-exprtk">
+  	<img src="https://goreportcard.com/badge/github.com/fffaraz/go-exprtk" alt="Go Report Card">
   </a>
 </p>
 
@@ -28,7 +28,7 @@ Go-ExprTk supports numerous forms of functional, logical and vector processing s
 ## Installation
 
 ```bash
-go get github.com/Pramod-Devireddy/go-exprtk
+go get github.com/fffaraz/go-exprtk
 ```
 
 ## Examples
@@ -39,7 +39,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/Pramod-Devireddy/go-exprtk"
+	"github.com/fffaraz/go-exprtk"
 )
 
 func main() {
@@ -64,7 +64,7 @@ func main() {
 }
 ```
 
-Check out more [Examples](https://github.com/Pramod-Devireddy/go-exprtk/tree/main/examples) 
+Check out more [Examples](https://github.com/fffaraz/go-exprtk/tree/main/examples) 
 
 
 ## ⚡ Features
