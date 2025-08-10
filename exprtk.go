@@ -1,6 +1,6 @@
 package exprtk
 
-// #cgo CXXFLAGS: -flto -fuse-linker-plugin -std=c++11
+// #cgo CXXFLAGS: -flto -fuse-linker-plugin -std=c++11 -Ofast
 // #cgo LDFLAGS: -L.
 // #include <stdlib.h>
 // #include "exprtkwrapper.h"
