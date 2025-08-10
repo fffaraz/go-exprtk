@@ -1020,7 +1020,7 @@ namespace exprtk
                   return (v1 == trunc_impl(v1, real_type_tag())) &&
                          (modulus_impl(v1, T(2), real_type_tag()) != T(0)) ?
                          -std::pow(abs_impl(v0, real_type_tag()), T(1) / v1) :
-                          std::numeric_limits<double>::quiet_NaN();
+                          std::numeric_limits<T>::quiet_NaN();
                }
 
                return std::pow(v0, T(1) / v1);
