@@ -1,7 +1,6 @@
 package exprtk
 
 import (
-	"fmt"
 	"math"
 	"reflect"
 	"testing"
@@ -52,7 +51,7 @@ func TestDoubleVariables(t *testing.T) {
 
 	err := exprtkObj.CompileExpression()
 	if err != nil {
-		fmt.Println(err.Error())
+		t.Error(err)
 		return
 	}
 
@@ -80,39 +79,47 @@ func TestMixedVariables(t *testing.T) {
 
 	err := exprtkObj.CompileExpression()
 	if err != nil {
-		fmt.Println("Err", err)
+		t.Error(err)
+		return
 	}
 
 	array := []float64{1, 2, 3, -4.3, 10, -6.5, 7, 8, -1.3}
 	exprtkObj.SetVectorVariableValue("x", array)
 
+	var result float64
+
 	eqnStr := "avg"
 	exprtkObj.SetStringVariableValue("eqn", eqnStr)
-	if math.Round(exprtkObj.GetEvaluatedValue()*10)/10 != 2.1 {
-		t.Error("Incorrect Value for avg", exprtkObj.GetEvaluatedValue())
+	result = exprtkObj.GetEvaluatedValue()
+	if math.Round(result*10)/10 != 2.1 {
+		t.Error("Incorrect Value for avg", result)
 	}
 
 	eqnStr = "max"
 	exprtkObj.SetStringVariableValue("eqn", eqnStr)
-	if exprtkObj.GetEvaluatedValue() != 10 {
-		t.Error("Incorrect Value for max", exprtkObj.GetEvaluatedValue())
+	result = exprtkObj.GetEvaluatedValue()
+	if result != 10 {
+		t.Error("Incorrect Value for max", result)
 	}
 
 	eqnStr = "min"
 	exprtkObj.SetStringVariableValue("eqn", eqnStr)
-	if exprtkObj.GetEvaluatedValue() != -6.5 {
-		t.Error("Incorrect Value for min", exprtkObj.GetEvaluatedValue())
+	result = exprtkObj.GetEvaluatedValue()
+	if result != -6.5 {
+		t.Error("Incorrect Value for min", result)
 	}
 
 	eqnStr = "sum"
 	exprtkObj.SetStringVariableValue("eqn", eqnStr)
-	if exprtkObj.GetEvaluatedValue() != 18.9 {
-		t.Error("Incorrect Value for sum", exprtkObj.GetEvaluatedValue())
+	result = exprtkObj.GetEvaluatedValue()
+	if result != 18.9 {
+		t.Error("Incorrect Value for sum", result)
 	}
 
 	eqnStr = "xyz"
 	exprtkObj.SetStringVariableValue("eqn", eqnStr)
-	if exprtkObj.GetEvaluatedValue() != 0.0 {
-		t.Error("Incorrect Value for xyz", exprtkObj.GetEvaluatedValue())
+	result = exprtkObj.GetEvaluatedValue()
+	if result != 0.0 {
+		t.Error("Incorrect Value for xyz", result)
 	}
 }
