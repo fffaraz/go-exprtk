@@ -5,6 +5,7 @@ package exprtk
 // #include <stdlib.h>
 // #include "exprtkwrapper.h"
 import "C"
+
 import (
 	"errors"
 	"unsafe"
@@ -58,7 +59,7 @@ func (obj GoExprtk) SetDoubleVariableValue(varName string, val float64) {
 }
 
 // SetStringVariableValue ... Sets value to the variable
-func (obj GoExprtk) SetStringVariableValue(varName string, val string) {
+func (obj GoExprtk) SetStringVariableValue(varName, val string) {
 	cVarName := C.CString(varName)
 	defer C.free(unsafe.Pointer(cVarName))
 	cVal := C.CString(val)

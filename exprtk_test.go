@@ -62,56 +62,57 @@ func TestDoubleVariables(t *testing.T) {
 	if exprtkObj.GetEvaluatedValue() != 600 {
 		t.Error("Incorrect Value")
 	}
-
 }
 
 func TestMixedVariables(t *testing.T) {
-	var eqn string
-	eqn = "if (eqn == 'avg') avg(x); "
+	exprtkObj := NewExprtk()
+	defer exprtkObj.Delete()
+
+	eqn := "if (eqn == 'avg') avg(x); "
 	eqn += "else if (eqn == 'max') max(x); "
 	eqn += "else if (eqn == 'min') min(x); "
 	eqn += "else if (eqn == 'sum') sum(x); "
 	eqn += "else 0; "
 
-	var eqnStr string
-	var array []float64 = []float64{1, 2, 3, -4.3, 10, -6.5, 7, 8, -1.3}
-
-	exprtkObj := NewExprtk()
-	defer exprtkObj.Delete()
-
 	exprtkObj.SetExpression(eqn)
 	exprtkObj.AddStringVariable("eqn")
 	exprtkObj.AddVectorVariable("x")
-	exprtkObj.CompileExpression()
+
+	err := exprtkObj.CompileExpression()
+	if err != nil {
+		fmt.Println("Err", err)
+	}
+
+	array := []float64{1, 2, 3, -4.3, 10, -6.5, 7, 8, -1.3}
 	exprtkObj.SetVectorVariableValue("x", array)
 
-	eqnStr = "avg"
+	eqnStr := "avg"
 	exprtkObj.SetStringVariableValue("eqn", eqnStr)
 	if math.Round(exprtkObj.GetEvaluatedValue()*10)/10 != 2.1 {
-		t.Error("Incorrect Value")
+		t.Error("Incorrect Value for avg", exprtkObj.GetEvaluatedValue())
 	}
 
 	eqnStr = "max"
 	exprtkObj.SetStringVariableValue("eqn", eqnStr)
 	if exprtkObj.GetEvaluatedValue() != 10 {
-		t.Error("Incorrect Value")
+		t.Error("Incorrect Value for max", exprtkObj.GetEvaluatedValue())
 	}
 
 	eqnStr = "min"
 	exprtkObj.SetStringVariableValue("eqn", eqnStr)
 	if exprtkObj.GetEvaluatedValue() != -6.5 {
-		t.Error("Incorrect Value")
+		t.Error("Incorrect Value for min", exprtkObj.GetEvaluatedValue())
 	}
 
 	eqnStr = "sum"
 	exprtkObj.SetStringVariableValue("eqn", eqnStr)
 	if exprtkObj.GetEvaluatedValue() != 18.9 {
-		t.Error("Incorrect Value")
+		t.Error("Incorrect Value for sum", exprtkObj.GetEvaluatedValue())
 	}
 
 	eqnStr = "xyz"
 	exprtkObj.SetStringVariableValue("eqn", eqnStr)
 	if exprtkObj.GetEvaluatedValue() != 0.0 {
-		t.Error("Incorrect Value")
+		t.Error("Incorrect Value for xyz", exprtkObj.GetEvaluatedValue())
 	}
 }
