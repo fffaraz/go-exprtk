@@ -4,22 +4,25 @@
 #include <vector>
 #include <unordered_map>
 
-struct DoubleValue{
+struct DoubleValue
+{
     std::string varName;
     double value;
 };
 
-struct StringValue{
+struct StringValue
+{
     std::string varName;
     std::string value;
 };
 
-struct VectorValue{
+struct VectorValue
+{
     std::string varName;
     std::vector<double> value;
 };
 
-struct  ExprtkStruct
+struct ExprtkStruct
 {
     std::string exprString;
     std::vector<DoubleValue*> doubleValue;
@@ -29,6 +32,21 @@ struct  ExprtkStruct
     exprtk::symbol_table<double> symbolTable;
     exprtk::expression<double> expression;
     exprtk::parser<double> parser;
+
+    ~ExprtkStruct() {
+        for (int i = 0; i < doubleValue.size(); ++i) {
+            delete doubleValue[i];
+            doubleValue[i] = nullptr;
+        }
+        for (int i = 0; i < stringValue.size(); ++i) {
+            delete stringValue[i];
+            stringValue[i] = nullptr;
+        }
+        for (int i = 0; i < vectorValue.size(); ++i) {
+            delete vectorValue[i];
+            vectorValue[i] = nullptr;
+        }
+    }
 };
 
 exprtkWrapper exprtkWrapperInit()

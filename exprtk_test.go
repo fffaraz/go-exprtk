@@ -22,8 +22,8 @@ func TestCompileExpression(t *testing.T) {
 
 	exprtkObj.SetExpression("x.1 + y.1")
 
-	exprtkObj.AddDoubleVariable("x.1")
-	exprtkObj.AddDoubleVariable("y.1")
+	exprtkObj.AddDoubleVariable("[x.1]")
+	exprtkObj.AddDoubleVariable("[y.1]")
 
 	err := exprtkObj.CompileExpression()
 	if err.Error() != "failed to compile the expression" {
